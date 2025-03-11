@@ -144,10 +144,10 @@ export default function Home() {
                 <h3 className="text-xl font-medium mb-4">Survey Process:</h3>
                 <ol className="space-y-4 list-decimal pl-5 text-left">
                   <li className="text-base">
-                    Click the <strong>"Participate"</strong> button below to begin the survey.
+                    Click the <strong>&quot;Participate&quot;</strong> button below to begin the survey.
                   </li>
                   <li className="text-base">
-                    A website will open in a <strong>new Incognito window</strong>. You'll see a cookie consent banner on this website.
+                    A website will open in a <strong>new Incognito window</strong>. You&apos;ll see a cookie consent banner on this website.
                   </li>
                   <li className="text-base">
                     <strong>Interact with the cookie banner</strong> according to your preferences.
@@ -162,7 +162,7 @@ export default function Home() {
                     The next website will <strong>automatically open</strong> after you submit your answers.
                   </li>
                   <li className="text-base">
-                    Repeat this process until you've completed all seven websites and proceed to the survey.
+                    Repeat this process until you&apos;ve completed all seven websites and proceed to the survey.
                   </li>
                 </ol>
               </div>
