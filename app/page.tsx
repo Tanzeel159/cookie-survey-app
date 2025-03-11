@@ -8,8 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { saveToFirestore } from "@/lib/firestore";
-import Link from "next/link";
-import { FaInfoCircle as Info, FaArrowRight as ArrowRight } from "react-icons/fa";
+import { FaInfoCircle as Info } from "react-icons/fa";
 
 // List of websites to visit
 const WEBSITES = [
