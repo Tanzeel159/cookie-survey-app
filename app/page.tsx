@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { saveToFirestore } from "@/lib/firestore";
+import Link from "next/link";
+import { FaInfoCircle as Info, FaArrowRight as ArrowRight } from "react-icons/fa";
 
 // List of websites to visit
 const WEBSITES = [
@@ -24,7 +26,7 @@ const WEBSITES = [
 const COOKIE_OPTIONS = [
   { id: "accept-all", label: "Accept All" },
   { id: "reject-all", label: "Reject All" },
-  { id: "manage-preferences", label: "Manage Preferences" },
+  { id: "manage-preferences", label: "Only Necessary | Manage Preferences | Customize Cookies" },
   { id: "no-action", label: "No Action" }
 ];
 
@@ -132,28 +134,61 @@ export default function Home() {
       <main className="container mx-auto py-12 px-4 text-center">
         <h1 className="text-4xl font-bold text-slate-900 mb-6">Cookie Consent Interaction Study</h1>
         
-        <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-          Click the button below to open a website. After selecting a cookie option, confirm your choice in the pop-up. <br /> 
-          Note - Open the website in Incognito Mode.
-          <br />
-        </p>
-        
         {currentWebsiteIndex === -1 ? (
-          <Card className="max-w-md mx-auto mb-12">
-            <CardContent className="pt-6">
-              <div className="space-y-4">
-                <p className="text-slate-600">
-                  This study tracks how users interact with cookie consent popups on various websites.
-                </p>
-                <Button 
-                  size="lg" 
-                  className="w-full bg-green-600 hover:bg-green-700"
-                  onClick={startStudy}
-                >
-                  Participate
-                </Button>
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">How It Works</CardTitle>
+              <CardDescription>Please follow these steps to complete the survey</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-muted p-6 rounded-lg">
+                <h3 className="text-xl font-medium mb-4">Survey Process:</h3>
+                <ol className="space-y-4 list-decimal pl-5 text-left">
+                  <li className="text-base">
+                    Click the <strong>"Participate"</strong> button below to begin the survey.
+                  </li>
+                  <li className="text-base">
+                    A website will open in a <strong>new Incognito window</strong>. You'll see a cookie consent banner on this website.
+                  </li>
+                  <li className="text-base">
+                    <strong>Interact with the cookie banner</strong> according to your preferences.
+                  </li>
+                  <li className="text-base">
+                    <strong>Close the website window</strong> after interacting with the banner. This is important to proceed!
+                  </li>
+                  <li className="text-base">
+                    Answer the survey questions about your experience.
+                  </li>
+                  <li className="text-base">
+                    The next website will <strong>automatically open</strong> after you submit your answers.
+                  </li>
+                  <li className="text-base">
+                    Repeat this process until you've completed all seven websites and proceed to the survey.
+                  </li>
+                </ol>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <Info className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-amber-800">Important Note</h4>
+                    <p className="text-amber-700 text-sm mt-1">
+                      You must close each website window after interacting with the cookie banner for the survey to proceed to the next website.
+                    </p>
+                  </div>
+                </div>
               </div>
             </CardContent>
+            <CardFooter className="flex justify-center">
+              <Button 
+                size="lg" 
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded"
+                onClick={startStudy}
+              >
+                Participate
+              </Button>
+            </CardFooter>
           </Card>
         ) : (
           <Button 
@@ -194,7 +229,7 @@ export default function Home() {
                       {record.selection === "Reject All" ? "✓" : ""}
                     </TableCell>
                     <TableCell className="border text-center">
-                      {record.selection === "Manage Preferences" ? "✓" : ""}
+                      {record.selection === "Only Necessary | Manage Preferences | Customize Cookies" ? "✓" : ""}
                     </TableCell>
                     <TableCell className="border text-center">
                       {record.selection === "No Action" ? "✓" : ""}
@@ -214,24 +249,24 @@ export default function Home() {
               <DialogTitle className="text-xl font-semibold mb-4">Which cookie option did you select?</DialogTitle>
             </DialogHeader>
             <RadioGroup value={selection} onValueChange={setSelection} className="space-y-4">
-  {COOKIE_OPTIONS.map((option) => (
-    <div key={option.id} className="flex items-center space-x-3">
-      <div className="relative flex items-center">
-        <RadioGroupItem 
-          value={option.label} 
-          id={option.id} 
-          className="h-5 w-5 border-2 border-slate-400 text-primary"
-        />
-        <Label 
-          htmlFor={option.id} 
-          className="ml-2 text-lg font-medium"
-        >
-          {option.label}
-        </Label>
-      </div>
-    </div>
-  ))}
-</RadioGroup>
+              {COOKIE_OPTIONS.map((option) => (
+                <div key={option.id} className="flex items-center space-x-3">
+                  <div className="relative flex items-center">
+                    <RadioGroupItem 
+                      value={option.label} 
+                      id={option.id} 
+                      className="h-5 w-5 border-2 border-slate-400 text-primary"
+                    />
+                    <Label 
+                      htmlFor={option.id} 
+                      className="ml-2 text-lg font-medium"
+                    >
+                      {option.label}
+                    </Label>
+                  </div>
+                </div>
+              ))}
+            </RadioGroup>
             <Button 
               onClick={handleSelectionSubmit} 
               className="w-full mt-4"
