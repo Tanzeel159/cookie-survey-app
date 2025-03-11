@@ -13,7 +13,7 @@ import { saveToFirestore } from "@/lib/firestore";
 const WEBSITES = [
   "https://www.ikea.com",
   "https://www.aa.com",
-  "https://www.lemonde.fr",
+  "https://www.dishoom.com",
   "https://www.fifa.com/en",
   "https://www.mcdonalds.com/us/en-us.html",
   "https://www.klaviyo.com/",
