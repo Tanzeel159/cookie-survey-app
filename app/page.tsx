@@ -147,7 +147,7 @@ export default function Home() {
                     Click the <strong>&quot;Participate&quot;</strong> button below to begin the survey.
                   </li>
                   <li className="text-base">
-                    A website will open in a <strong>new Incognito window</strong>. You&apos;ll see a cookie consent banner on this website.
+                    Open the website in a <strong>new Incognito window</strong>.
                   </li>
                   <li className="text-base">
                     <strong>Interact with the cookie banner</strong> according to your preferences.
@@ -156,7 +156,7 @@ export default function Home() {
                     <strong>Close the website window</strong> after interacting with the banner. This is important to proceed!
                   </li>
                   <li className="text-base">
-                    Answer the survey questions about your experience.
+                    Select the option you chose and click <strong>&quot;Submit&quot;</strong>.
                   </li>
                   <li className="text-base">
                     The next website will <strong>automatically open</strong> after you submit your answers.
